@@ -61,7 +61,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/leaderboard/**").permitAll()
 
             
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
             )
 
             .addFilterBefore(
