@@ -60,8 +60,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/courses/**").permitAll()
                 .requestMatchers("/api/leaderboard/**").permitAll()
 
-                // Everything else requires authentication
-                .anyRequest().authenticated()
+            
+                .anyRequest().permitAll()
             )
 
             .addFilterBefore(
