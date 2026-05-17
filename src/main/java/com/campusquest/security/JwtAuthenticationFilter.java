@@ -29,21 +29,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             FilterChain filterChain
     ) throws ServletException, IOException {
 
-        // IMPORTANT: Handle CORS manually
-        response.setHeader("Access-Control-Allow-Origin",
-                "https://campus-quest-gold.vercel.app");
-
-        response.setHeader("Access-Control-Allow-Methods",
-                "GET, POST, PUT, DELETE, OPTIONS");
-
-        response.setHeader("Access-Control-Allow-Headers",
-                "Authorization, Content-Type");
-
-        response.setHeader("Access-Control-Allow-Credentials", "true");
-
-        // Allow preflight requests immediately
-        if (request.getMethod().equals(HttpMethod.OPTIONS.name())) {
+        // Allow preflight requests
+        if (request.getMethod().equalsIgnoreCase(HttpMethod.OPTIONS.name())) {
             response.setStatus(HttpServletResponse.SC_OK);
+            filterChain.doFilter(request, response);
             return;
         }
 
@@ -85,7 +74,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         } catch (Exception e) {
 
-           logger.error("JWT Authentication Error: " + e.getMessage());
+            logger.error("JWT Authentication Error: " + e.getMessage());
 
         }
 
