@@ -1,0 +1,209 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                   CAMPUS QUEST BACKEND - Getting Started                     ║
+║                                                                              ║
+║  A Complete Spring Boot + MongoDB Backend for Gamified Learning Platform    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+✅ WHAT YOU HAVE:
+─────────────────────────────────────────────────────────────────────────────
+
+Complete Spring Boot backend with:
+  ✓ User Registration & Login (JWT Authentication)
+  ✓ XP System (Award points, automatic level up)
+  ✓ Daily Streak Tracking (Maintain learning habits)
+  ✓ Badge System (Achievements)
+  ✓ Weekly Leaderboard (Top 10 rankings)
+  ✓ Course Management (Enroll, track progress)
+  ✓ MongoDB Database (All data persisted)
+
+─────────────────────────────────────────────────────────────────────────────
+
+📁 FILES INCLUDED:
+─────────────────────────────────────────────────────────────────────────────
+
+GUIDES (READ THESE):
+  • QUICK_START.md .................... Fast 10-minute setup
+  • COMPLETE_SETUP_GUIDE.md ........... Deep dive with explanations
+  • README.md ......................... API documentation
+
+CODE:
+  • pom.xml ........................... Maven configuration (dependencies)
+  • src/main/java/com/campusquest/ ... All Java source code
+  • src/main/resources/application.yml Spring Boot config
+
+─────────────────────────────────────────────────────────────────────────────
+
+🚀 QUICK START (5 MINUTES):
+─────────────────────────────────────────────────────────────────────────────
+
+1. Make sure MongoDB is running
+   • Open Services (Win + R → services.msc)
+   • Find "MongoDB Server" → Start
+
+2. Open this folder in VS Code
+   • File → Open Folder → select campus-quest-backend
+
+3. Open Terminal in VS Code (Ctrl + backtick)
+
+4. Type this command and wait 3-5 minutes:
+   mvn clean install
+
+5. Then start the server:
+   mvn spring-boot:run
+
+6. When you see "Started CampusQuestApplication" → SUCCESS! ✅
+
+7. Test it works (new terminal tab):
+   curl http://localhost:8080/api/courses
+
+   Should return: []
+
+─────────────────────────────────────────────────────────────────────────────
+
+🎯 WHAT GETS CREATED:
+─────────────────────────────────────────────────────────────────────────────
+
+Database (MongoDB on localhost:27017):
+  Users Collection .............. user accounts with XP, level, streak
+  Courses Collection ............ available courses
+  User Progress Collection ...... course enrollment & completion
+  Badges Collection ............. achievements earned
+
+API Server (Java on localhost:8080):
+  Handles login/register ......... /api/auth/login, /register
+  Manages user profiles .......... /api/users/profile
+  Serves courses ................. /api/courses
+  Calculates leaderboard ......... /api/leaderboard/weekly
+
+─────────────────────────────────────────────────────────────────────────────
+
+📊 ARCHITECTURE:
+─────────────────────────────────────────────────────────────────────────────
+
+Request Flow:
+  
+  Client (React)
+      ↓
+  API Endpoint (/api/users/profile) → UserController
+      ↓
+  Business Logic → UserService
+      ↓
+  Database Query → UserRepository
+      ↓
+  MongoDB ← Store/Retrieve User Data
+      ↓
+  Response JSON → Client
+
+─────────────────────────────────────────────────────────────────────────────
+
+🔑 KEY ENDPOINTS:
+─────────────────────────────────────────────────────────────────────────────
+
+POST   /api/auth/register          Register new user
+POST   /api/auth/login             Login user (get JWT token)
+GET    /api/users/profile          Get user profile (requires token)
+GET    /api/courses                Get all courses
+POST   /api/courses/{id}/enroll    Enroll in course
+GET    /api/leaderboard/weekly     Get top 10 users
+GET    /api/leaderboard/rank       Get your rank
+
+─────────────────────────────────────────────────────────────────────────────
+
+🔧 PREREQUISITES (Already Installed):
+─────────────────────────────────────────────────────────────────────────────
+
+✓ Java 17 JDK (from Adoptium)
+✓ Maven 3.8+ (for building)
+✓ MongoDB 7.0+ (database)
+✓ Node.js & npm (later for frontend)
+✓ Git (version control)
+✓ VS Code (editor)
+
+─────────────────────────────────────────────────────────────────────────────
+
+💡 TESTING THE API:
+─────────────────────────────────────────────────────────────────────────────
+
+Option A: Thunder Client (VS Code extension) - EASIEST
+  • Install "Thunder Client" in VS Code
+  • Create new request: POST /api/auth/register
+  • Send JSON: { "email": "test@test.com", "password": "123", "fullName": "Test" }
+
+Option B: Postman (standalone app)
+  • Download from postman.com
+  • Same as Thunder Client but more features
+
+Option C: Command line (curl)
+  • curl -X POST http://localhost:8080/api/auth/register \
+    -H "Content-Type: application/json" \
+    -d '{"email":"test@test.com","password":"123","fullName":"Test"}'
+
+─────────────────────────────────────────────────────────────────────────────
+
+❓ COMMON ISSUES:
+─────────────────────────────────────────────────────────────────────────────
+
+"Connection refused"
+  → MongoDB not running. Open services.msc and start MongoDB Server
+
+"Port 8080 already in use"
+  → Change port in application.yml (line 12) from 8080 to 8081
+
+"BUILD FAILURE"
+  → Run: mvn clean install -U
+
+Lots of red text in terminal
+  → Scroll down. If it says "BUILD SUCCESS" at the end, you're fine.
+
+─────────────────────────────────────────────────────────────────────────────
+
+📚 WHAT'S INSIDE (Code Structure):
+─────────────────────────────────────────────────────────────────────────────
+
+entity/             Database models (User, Course, Badge, etc)
+repository/         MongoDB queries (find user, get top 10, etc)
+service/            Business logic (login, award XP, level up)
+controller/         REST API endpoints (@PostMapping, @GetMapping)
+dto/                Request/response formats (LoginRequest, AuthResponse)
+security/           JWT token generation and validation
+config/             Spring Boot configuration (CORS, database, etc)
+
+─────────────────────────────────────────────────────────────────────────────
+
+📖 RECOMMENDED READING ORDER:
+─────────────────────────────────────────────────────────────────────────────
+
+1. Read QUICK_START.md (this document) ← You are here
+2. Read COMPLETE_SETUP_GUIDE.md (detailed explanations)
+3. Follow README.md (API reference)
+4. Explore the code in src/main/java/com/campusquest/
+
+─────────────────────────────────────────────────────────────────────────────
+
+🎓 LEARNING OUTCOMES:
+─────────────────────────────────────────────────────────────────────────────
+
+After completing this project, you'll understand:
+  ✓ How Spring Boot REST APIs work
+  ✓ JWT authentication and token-based security
+  ✓ MongoDB database design and queries
+  ✓ Service-based architecture
+  ✓ Game mechanics (XP, streaks, leaderboards)
+  ✓ How to build production-grade APIs
+
+─────────────────────────────────────────────────────────────────────────────
+
+✨ NEXT STEPS:
+─────────────────────────────────────────────────────────────────────────────
+
+1. Get this backend running (follow QUICK_START.md)
+2. Test all endpoints using Thunder Client
+3. Build React frontend (connects to this API)
+4. Add more game features (daily quests, challenges, etc)
+5. Deploy to production (Railway, Render, AWS)
+
+─────────────────────────────────────────────────────────────────────────────
+
+Need help? Check COMPLETE_SETUP_GUIDE.md for detailed explanations! 📖
+
+Happy coding! 🚀

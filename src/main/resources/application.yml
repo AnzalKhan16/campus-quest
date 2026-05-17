@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: Campus Quest Backend
+  
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/campus_quest
+      auto-index-creation: true
+  
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+jwt:
+  secret: mySecretKeyForCampusQuestApplicationThatIsLongEnoughForHS256
+  expiration: 86400000  # 24 hours in milliseconds
+
+logging:
+  level:
+    root: INFO
+    com.campusquest: DEBUG
