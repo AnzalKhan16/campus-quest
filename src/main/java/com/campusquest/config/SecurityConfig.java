@@ -62,7 +62,8 @@ public class SecurityConfig {
         "http://localhost:5174",
         "http://localhost:5175",
         "http://localhost:3000",
-        "https://campus-quest-gold.vercel.app"
+        "https://campus-quest-gold.vercel.app" 
+        
 ));
 
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
