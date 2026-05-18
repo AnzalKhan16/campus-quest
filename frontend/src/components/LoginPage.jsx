@@ -15,7 +15,7 @@ export default function LoginPage() {
 
   try {
     // 1. Register user first (safe if already exists)
-    await fetch('https://campus-quest-production.up.railway.app', {
+    await fetch('https://campus-quest-production.up.railway.app/api/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
