@@ -57,13 +57,16 @@ public class SecurityConfig {
                 // Allow OPTIONS requests
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
-                // Public APIs
-                .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/courses/**").permitAll()
-                .requestMatchers("/api/leaderboard/**").permitAll()
+               .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
+.requestMatchers(HttpMethod.POST, "/api/auth/register").permitAll()
 
-                // Protected APIs
-                .anyRequest().authenticated()
+.requestMatchers("/api/auth/**").permitAll()
+.requestMatchers("/api/courses/**").permitAll()
+.requestMatchers("/api/leaderboard/**").permitAll()
+
+.requestMatchers("/api/users/**").authenticated()
+
+.anyRequest().permitAll()
             )
 
             .addFilterBefore(
