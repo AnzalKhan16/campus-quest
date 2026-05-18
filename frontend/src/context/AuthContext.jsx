@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
   try {
     const response = await fetch(
-      'http://localhost:8080/api/auth/login',
+      'https://campus-quest-production.up.railway.app',
       {
         method: 'POST',
         headers: {
@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }) => {
 
     try {
       const response = await fetch(
-        'http://localhost:8080/api/auth/register',
+        'https://campus-quest-production.up.railway.app',
         {
           method: 'POST',
           headers: {
