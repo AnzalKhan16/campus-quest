@@ -246,4 +246,3 @@ mvn clean install -U
 
 ---
 
-**Happy Coding!** 🚀
