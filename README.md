@@ -236,13 +236,5 @@ mvn clean install -U
 ```
 
 ---
-
-## Notes
-
-- Passwords are hashed using BCrypt (never stored in plain text)
-- JWT tokens expire after 24 hours
-- XP per level: 1000 (configurable in GamificationService)
-- Level progression is automatic when you reach XP threshold
-
----
+Deployment is yet to be completed 
 
