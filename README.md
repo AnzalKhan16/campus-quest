@@ -236,5 +236,5 @@ mvn clean install -U
 ```
 
 ---
-Deployment is yet to be completed 
+Deployment is yet to be completed (cors error)
 
