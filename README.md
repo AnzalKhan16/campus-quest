@@ -1,4 +1,4 @@
-# Campus Quest Backend - Spring Boot API
+# Campus Quest Backend 
 
 A gamified learning platform backend built with Spring Boot, MongoDB, and JWT authentication.
 
